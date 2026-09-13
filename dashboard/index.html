@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#1f5c45" />
+    <title>Florart | Dashboard</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="bloom bloom-left" aria-hidden="true"></div>
+    <div class="bloom bloom-right" aria-hidden="true"></div>
+
+    <main class="shell">
+      <header class="hero">
+        <div class="brand-line">
+          <span class="brand-mark" aria-hidden="true">✿</span>
+          <span class="brand-name">florart</span>
+          <span class="brand-divider" aria-hidden="true"></span>
+          <span class="brand-tagline">inteligência que floresce</span>
+        </div>
+
+        <div class="hero-copy">
+          <div>
+            <p class="eyebrow">Visão diária da floricultura</p>
+            <h1>Dados que ajudam cada detalhe a florescer.</h1>
+            <p class="hero-description">
+              Acompanhe pedidos, catálogo, estoque e as experiências de quem escolhe a Florart.
+            </p>
+          </div>
+          <div class="refresh-status" aria-live="polite">
+            <span class="pulse" aria-hidden="true"></span>
+            <span id="updatedAt">Atualizando dados...</span>
+          </div>
+        </div>
+      </header>
+
+      <section class="metric-grid" aria-label="Resumo operacional">
+        <article class="metric-card pedidos-card" data-panel="pedidos">
+          <header>
+            <span class="card-icon" aria-hidden="true">⌁</span>
+          </header>
+          <p class="metric-label">Pedidos em andamento</p>
+          <div class="metric" id="pedidosMetric">--</div>
+          <div class="content compact-content" id="pedidosContent">Carregando...</div>
+        </article>
+
+        <article class="metric-card produtos-card" data-panel="produtos">
+          <header>
+            <span class="card-icon" aria-hidden="true">❀</span>
+          </header>
+          <p class="metric-label">Itens no catálogo</p>
+          <div class="metric" id="produtosMetric">--</div>
+          <div class="content compact-content" id="produtosContent">Carregando...</div>
+        </article>
+
+        <article class="metric-card estoque-card" data-panel="estoque">
+          <header>
+            <span class="card-icon" aria-hidden="true">⌂</span>
+          </header>
+          <p class="metric-label">Alertas de reposição</p>
+          <div class="metric" id="estoqueMetric">--</div>
+          <div class="content compact-content" id="estoqueContent">Carregando...</div>
+        </article>
+
+        <article class="metric-card avaliacoes-card" data-panel="avaliacoes">
+          <header>
+            <span class="card-icon" aria-hidden="true">♥</span>
+          </header>
+          <p class="metric-label">Satisfação média</p>
+          <div class="metric" id="avaliacoesMetric">--</div>
+          <div class="content compact-content" id="avaliacoesContent">Carregando...</div>
+        </article>
+      </section>
+
+      <section class="analytics" aria-label="Análises operacionais">
+        <article class="chart-card orders-chart-card">
+          <header class="chart-header">
+            <div>
+              <p class="section-kicker">Fluxo de vendas</p>
+              <h2>Pedidos por etapa</h2>
+            </div>
+            <span class="chart-badge">Em tempo real</span>
+          </header>
+          <div class="chart-canvas doughnut-canvas">
+            <canvas id="ordersStatusChart" aria-label="Distribuição de pedidos por etapa"></canvas>
+          </div>
+          <p class="chart-note" id="ordersStatusNote">Carregando distribuição dos pedidos...</p>
+        </article>
+
+        <article class="chart-card stock-chart-card">
+          <header class="chart-header">
+            <div>
+              <p class="section-kicker">Cuidado diário</p>
+              <h2>Estoque que pede atenção</h2>
+            </div>
+            <span class="chart-badge chart-badge-alert">Reposição</span>
+          </header>
+          <div class="chart-canvas bar-canvas">
+            <canvas id="stockChart" aria-label="Quantidade atual e mínima dos itens em estoque baixo"></canvas>
+          </div>
+          <p class="chart-note" id="stockNote">Carregando alertas de estoque...</p>
+        </article>
+
+        <article class="chart-card ratings-chart-card">
+          <header class="chart-header">
+            <div>
+              <p class="section-kicker">Voz dos clientes</p>
+              <h2>Produtos mais bem avaliados</h2>
+            </div>
+            <span class="chart-badge chart-badge-love">De 0 a 5</span>
+          </header>
+          <div class="chart-canvas bar-canvas">
+            <canvas id="ratingsChart" aria-label="Média de avaliações por produto"></canvas>
+          </div>
+          <p class="chart-note" id="ratingsNote">Carregando avaliações dos produtos...</p>
+        </article>
+
+        <article class="table-card">
+          <header class="chart-header">
+            <div>
+              <p class="section-kicker">Últimos movimentos</p>
+              <h2>Pedidos recentes</h2>
+            </div>
+            <span class="table-flower" aria-hidden="true">✽</span>
+          </header>
+          <div class="orders-table-wrap" id="recentOrdersContent">
+            <p class="table-empty">Carregando pedidos recentes...</p>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
