@@ -1,0 +1,38 @@
+{
+  "name": "florart",
+  "version": "1.0.0",
+  "private": true,
+  "packageManager": "pnpm@11.19.0",
+  "description": "Florart - APIs REST, Dashboard e MCP para gestão de floricultura.",
+  "scripts": {
+    "start:pedidos": "ts-node src/apps/servicos/pedidos/main.ts",
+    "start:produtos": "ts-node src/apps/servicos/produtos/main.ts",
+    "start:estoque": "ts-node src/apps/servicos/estoque/main.ts",
+    "start:avaliacoes": "ts-node src/apps/servicos/avaliacoes/main.ts",
+    "start:mcp:pedidos": "ts-node src/apps/mcp/pedidos/main.ts",
+    "start:mcp:produtos": "ts-node src/apps/mcp/produtos/main.ts",
+    "start:mcp:estoque": "ts-node src/apps/mcp/estoque/main.ts",
+    "start:mcp:avaliacoes": "ts-node src/apps/mcp/avaliacoes/main.ts",
+    "chat": "ts-node src/apps/mcp/chat/main.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.24.1",
+    "@modelcontextprotocol/sdk": "1.20.0",
+    "@nestjs/common": "^10.4.15",
+    "@nestjs/core": "^10.4.15",
+    "@nestjs/platform-express": "^10.4.15",
+    "dotenv": "^16.4.7",
+    "openai": "^4.104.0",
+    "pg": "^8.13.1",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.1",
+    "zod": "3.25.76"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "@types/pg": "^8.11.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.2"
+  }
+}
