@@ -1,0 +1,64 @@
+services:
+  pedidos-mcp:
+    build:
+      context: ../../..
+      dockerfile: src/apps/mcp/Dockerfile
+    container_name: pedidos-mcp
+    hostname: pedidos-mcp
+    restart: always
+    volumes:
+      - ../../../src:/mcp/src
+    command: npm run start:mcp:pedidos
+    ports:
+      - "8001:8000"
+    networks:
+      - rede-florart
+
+  produtos-mcp:
+    build:
+      context: ../../..
+      dockerfile: src/apps/mcp/Dockerfile
+    container_name: produtos-mcp
+    hostname: produtos-mcp
+    restart: always
+    volumes:
+      - ../../../src:/mcp/src
+    command: npm run start:mcp:produtos
+    ports:
+      - "8002:8000"
+    networks:
+      - rede-florart
+
+  estoque-mcp:
+    build:
+      context: ../../..
+      dockerfile: src/apps/mcp/Dockerfile
+    container_name: estoque-mcp
+    hostname: estoque-mcp
+    restart: always
+    volumes:
+      - ../../../src:/mcp/src
+    command: npm run start:mcp:estoque
+    ports:
+      - "8003:8000"
+    networks:
+      - rede-florart
+
+  avaliacoes-mcp:
+    build:
+      context: ../../..
+      dockerfile: src/apps/mcp/Dockerfile
+    container_name: avaliacoes-mcp
+    hostname: avaliacoes-mcp
+    restart: always
+    volumes:
+      - ../../../src:/mcp/src
+    command: npm run start:mcp:avaliacoes
+    ports:
+      - "8004:8000"
+    networks:
+      - rede-florart
+
+networks:
+  rede-florart:
+    external: true
