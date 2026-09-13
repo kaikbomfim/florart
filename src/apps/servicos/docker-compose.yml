@@ -1,0 +1,92 @@
+services:
+  pedidos:
+    build:
+      context: ../../..
+      dockerfile: src/apps/servicos/Dockerfile
+    container_name: pedidos
+    hostname: pedidos
+    restart: always
+    volumes:
+      - ../../../src:/servico/src
+    ports:
+      - 7001:5000
+    command: npm run start:pedidos
+    networks:
+      - rede-florart
+
+  produtos:
+    build:
+      context: ../../..
+      dockerfile: src/apps/servicos/Dockerfile
+    container_name: produtos
+    hostname: produtos
+    restart: always
+    volumes:
+      - ../../../src:/servico/src
+    ports:
+      - 7002:5000
+    command: npm run start:produtos
+    networks:
+      - rede-florart
+
+  estoque:
+    build:
+      context: ../../..
+      dockerfile: src/apps/servicos/Dockerfile
+    container_name: estoque
+    hostname: estoque
+    restart: always
+    volumes:
+      - ../../../src:/servico/src
+    ports:
+      - 7003:5000
+    command: npm run start:estoque
+    networks:
+      - rede-florart
+
+  avaliacoes:
+    build:
+      context: ../../..
+      dockerfile: src/apps/servicos/Dockerfile
+    container_name: avaliacoes
+    hostname: avaliacoes
+    restart: always
+    volumes:
+      - ../../../src:/servico/src
+    ports:
+      - 7004:5000
+    command: npm run start:avaliacoes
+    networks:
+      - rede-florart
+
+  dados:
+    image: postgres:16-alpine
+    container_name: dados
+    hostname: dados
+    restart: always
+    ports:
+      - "7005:5432"
+    volumes:
+      - ../../../sql/init.sql:/docker-entrypoint-initdb.d/init.sql
+    environment:
+      - POSTGRES_PASSWORD=florart
+      - POSTGRES_USER=florart
+      - POSTGRES_DB=florart
+      - PGDATA=/var/lib/postgresql/data/pgdata
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    networks:
+      - rede-florart
+
+  dashboard:
+    build: ../../../dashboard
+    container_name: dashboard
+    hostname: dashboard
+    restart: always
+    ports:
+      - "8080:80"
+    networks:
+      - rede-florart
+
+networks:
+  rede-florart:
+    external: true
